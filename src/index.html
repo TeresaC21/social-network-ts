@@ -1,12 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+
+   <!-- The core Firebase JS SDK is always required and must be listed first -->
+   <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-auth.js"></script>
+   <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+   <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-analytics.js"></script>
+   <script>
+     // Your web app's Firebase configuration
+     var firebaseConfig = {
+       apiKey: "AIzaSyDF4I72UylukzQjrOa2PuCjblR8i3qvaRc",
+       authDomain: "social-network-acb56.firebaseapp.com",
+       databaseURL: "https://social-network-acb56.firebaseio.com",
+       projectId: "social-network-acb56",
+       storageBucket: "social-network-acb56.appspot.com",
+       messagingSenderId: "804331385302",
+       appId: "1:804331385302:web:97e05ee734980a8fbd7477",
+       measurementId: "G-4065B18ZCR"
+     };
+     // Initialize Firebase
+     firebase.initializeApp(firebaseConfig);
+     firebase.analytics();
+   </script>
+ 
 </head>
+
 <body>
+
+  <!-- ****************************************** FORMULARIO EMAIL PASSWORD ***************************************-->
+  <h3>THIS IS FORM ENTER USER REGISTERED</h3>
+  <form id="form-email">
+    <label for="email">Email</label>
+    <input type="text" name="email" id="emailRegistered">
+    <br><br><br>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="passwordRegistered">
+    <br><br>
+    <input type="submit" value="Enter">
+  </form>
+<br><br>
+
+  <div id="form-create">
+  </div>
+
+  <div id="contentUser">
+  </div>
+ 
   <script type="module" src="index.js"></script>
 </body>
+
 </html>
