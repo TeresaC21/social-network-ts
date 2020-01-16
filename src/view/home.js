@@ -1,12 +1,14 @@
 export default () => {
-    const viewHome = `
-    <h2 class="text-center">!HOLA BIENVENIDO¡</h2>
-    <figure class="text-center">
-    <img class="image" src="img/perrito-saluda.gif" alt="perrito saluda">
-    </figure>`
+    function watchUser() {
+        let content = document.getElementById('contentUser');
+        content.innerHTML = `
+    <p>WELCOME</p>
+     <button id="btnClosed">Sign off</button>
+    `;
+    const divElem = document.createElement('div');
+    divElem.innerHTML = watchUser;
 
-    const inicioElem = document.createElement('div');
-    inicioElem.innerHTML = viewHome;
-
-    return inicioElem;
+    return divElem;
+        //document.querySelector('#btnClosed').addEventListener('click', closed);
+    }
 }
