@@ -95,8 +95,8 @@ formEnter.addEventListener('submit', enterUser, false); // NO dinamico
 
 function enterUser(event){
     event.preventDefault();
-    let userRegistered = event.target.emailRegistered.value;
-    let passwordUserRegistered = event.target.passwordRegistered.value;
+    let userRegistered = event.target.email.value;
+    let passwordUserRegistered = event.target.password.value;
 
     firebase.auth().signInWithEmailAndPassword(userRegistered, passwordUserRegistered)
     

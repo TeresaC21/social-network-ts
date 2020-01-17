@@ -8,8 +8,7 @@ const changeView = (router) => {
     container.innerHTML = '';
     switch (router) {
         case '#/': {
-            return container.appendChild(components.home())
-;        };
+            return container.appendChild(components.home());        };
         case '#/adoptarme': {
             return container.appendChild(components.adoptame());
     }
