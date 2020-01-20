@@ -1,9 +1,9 @@
-import Home from './home.js';
 import Adoptame from './adoptame.js';
+import Welcome from './welcome.js';
 
 const components = {
-    home: Home,
-    adoptame: Adoptame
-}
+  adoptame: Adoptame,
+  welcome: Welcome,
+};
 
 export { components };

@@ -1,7 +1,8 @@
-import { changeView } from './view-controler/index-dos.js'
+import { changeView } from './controller/changeView.js';
 
-const init = () => {
-    changeView(window.location.hash);
-    window.addEventListener('hashchange', () => changeView(window.location.hash));
-}
+export const init = () => {
+  console.log(window.location.hash);
+  changeView(window.location.hash);
+  window.addEventListener('hashchange', () => changeView(window.location.hash));
+};
 window.addEventListener('load', init);

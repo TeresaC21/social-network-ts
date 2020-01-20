@@ -28,9 +28,6 @@ export default () => {
     <img class="image" src="img/perrito-saluda.gif" alt="perrito saluda">
     </figure>`
 
-    const inicioElem = document.createElement('div');
-    inicioElem.innerHTML = viewHome;
-
     return inicioElem;
 
     

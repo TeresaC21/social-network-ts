@@ -5,8 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="petfriend-265618.apps.googleusercontent.com">
   <title>Document</title>
-
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
    <!-- The core Firebase JS SDK is always required and must be listed first -->
    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-auth.js"></script>
@@ -33,6 +35,8 @@
 </head>
 
 <body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v5.0&appId=203517680780058&autoLogAppEvents=1"></script>
 <header>
   <nav>
   <ul>
@@ -50,8 +54,7 @@
 </section>
 
 <footer></footer>
-  <!-- ****************************************** FORMULARIO EMAIL PASSWORD ***************************************-->
-  
+ 
   <div id="form-create">
 
   </div>
@@ -59,26 +62,9 @@
   <div id="contentUser">
     
   </div>
-
-
- <!--<button id="btnRegistrar">REGISTRATE</button>
-<h3>USUARIO REGISTRADO</h3>
-  <form id="form-email-uno">
-    <label for="email">Email</label>
-    <input type="text" name="email" id="emailRegistered">
-    <br><br><br>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="passwordRegistered">
-    <br><br>
-    <input type="submit" value="Enter">
-  </form>
-<br><br>
-
--->
-
  
-  <script type="module" src="index.js"></script>
- <!-- <script type="module" src="main.js"></script> -->
+  <!-- <script type="module" src="index.js"></script> -->
+<script type="module" src="main.js"></script>
 </body>
 
 </html>
