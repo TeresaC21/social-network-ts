@@ -23,6 +23,11 @@ export const buildElement = (typeElement, insertText, typeInput, nameID) => {
     variable.innerHTML = insertText;
     variable.setAttribute('href', '');
     document.getElementById(nameID).appendChild(variable);
+  } else if (typeElement === 'INPUT' && typeInput === 'text') {
+    variable.setAttribute('placeholder', '¿Algo nuevo para compartir?');
+    variable.name = 'descripcion';
+    document.getElementById(nameID).appendChild(variable);
   }
   return variable;
 };
+

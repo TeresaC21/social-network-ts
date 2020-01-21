@@ -1,6 +1,7 @@
-/*import { components } from './view/index-tres.js';
+import { components } from './view/index-tres.js';
 import Welcome from './view/welcome.js';
 import Post from './view/post.js';
+import Register from './view/register.js';
 
 export const changeView = (router) => {
   // console.log(router)
@@ -17,6 +18,11 @@ export const changeView = (router) => {
   // lo insertamos en el elemento #form-post
   Post();
 
+  const formCreateRegister = document.getElementById('contentUser');
+  formCreateRegister.innerHTML = '';
+  // lo insertamos en el elemento #form-post
+  Register();
+
   switch (router) {
     case '#/': {
       return container.appendChild(components.welcome()); }
@@ -29,4 +35,3 @@ export const changeView = (router) => {
   console.log(router);
   return null;
 };
-*/
