@@ -7,11 +7,7 @@
 // ventanita descripcion, boton imagen, boton publicar
 
 export default () => {
-    
-    function watchUser() {
-        let content = document.getElementById('contentUser');
-        content.innerHTML = `
-    
+    let watchUser =`
      <button id="btnClosed">Sign off</button>
     `;
     const divElem = document.createElement('div');
@@ -20,7 +16,7 @@ export default () => {
     return divElem;
         //document.querySelector('#btnClosed').addEventListener('click', closed);
     }
-}
+
 
     const viewHome = `
     <h2 class="text-center">!HOLA BIENVENIDO¡</h2>

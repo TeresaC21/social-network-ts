@@ -1,4 +1,4 @@
-const providerFacebook = new firebase.auth.FacebookAuthProvider();
+/*const providerFacebook = new firebase.auth.FacebookAuthProvider();
 const providerGoogle = new firebase.auth.GoogleAuthProvider();
 
 export const facebookLogin = () => firebase.auth().signInWithRedirect(providerFacebook);
@@ -24,3 +24,4 @@ export const redirectResult = () => firebase.auth().getRedirectResult().then((re
   console.log(email);
   console.log(credential);
 });
+*/

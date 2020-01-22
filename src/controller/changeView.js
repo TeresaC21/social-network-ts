@@ -1,5 +1,6 @@
-import { components } from '../view/index-tres.js';
-import Welcome from '../view/welcome.js';
+/*import { components } from './view/index-tres.js';
+import Welcome from './view/welcome.js';
+import Post from './view/post.js';
 
 export const changeView = (router) => {
   // console.log(router)
@@ -10,6 +11,11 @@ export const changeView = (router) => {
   formCreate.innerHTML = '';
   // lo insertamos en el elemento #form-create
   Welcome();
+
+  const formCreatePost = document.getElementById('contentHome');
+  formCreatePost.innerHTML = '';
+  // lo insertamos en el elemento #form-post
+  Post();
 
   switch (router) {
     case '#/': {
@@ -23,3 +29,4 @@ export const changeView = (router) => {
   console.log(router);
   return null;
 };
+*/
