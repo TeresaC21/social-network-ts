@@ -15,7 +15,8 @@ export default () => {
       <input name="email" type="email" id="formInputEmail" placeholder="email"></br>
       <input name="password" type="password" id="formInputPassw" placeholder="password"></br>
       <button type="submit" id="btn-email"><a href="#/post">Iniciar sesión</a></button></br>
-      <button type="submit" id="register">regístrate</button></br></br>
+      
+      <button type="submit" id="register"><a href="#/register">regístrate</a></button></br></br>
    </form>`
   //const divElem = document.createElement('div');
   //divElem.innerHTML = viewWelcome;

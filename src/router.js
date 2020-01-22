@@ -32,6 +32,11 @@ import Register from './view/register.js';
     container.innerHTML = '';
   switch (router) {
     case '#/': {
+      // const dataEnter = getEnter(email, password);
+       //Welcome();
+       return container.appendChild(components.welcome());
+     }
+    case '#/': {
      // const dataEnter = getEnter(email, password);
       //Welcome();
       return container.appendChild(components.welcome());
