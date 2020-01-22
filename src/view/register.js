@@ -17,7 +17,8 @@ export default () => {
    let btn = viewRegister.querySelector("#btn-email-reg");
    btn.addEventListener('click', registerAccount);
 
-   document.getElementById('contentHome').appendChild(viewRegister);
+  // document.getElementById('contentHome').appendChild(viewRegister);
+   return viewRegister
 }
 /*
  // Formulario de registro
