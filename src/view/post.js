@@ -28,7 +28,8 @@ export default () => {
     let btn = viewPost.querySelector("#btn-addPost");
     btn.addEventListener('click', addPost);
 
-    document.getElementById('contentHome').appendChild(viewPost);
+   // document.getElementById('contentHome').appendChild(viewPost);
+    return viewPost
 }
 
 /*

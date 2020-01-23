@@ -1,8 +1,23 @@
+/*
+import { signInAuth } from "./controller/todo.js"
+
+const changeHash = (hash) =>  {
+  location.hash = hash;
+}
+
+export const registerEmail = () => {
+  const email = event.target.email.value;
+  const password = event.target.password.value;
+  signInAuth(email, password)
+    .then(() => changeHash('/welcome'))
+    .catch(() => {})
+}*/
+
 // Crear nueva cuenta de correo
 export function registerAccount(event) {
   event.preventDefault();
   console.log('funciona model/store REGISTRAR');
-  const user = event.target.email.value;
+ /* const user = event.target.email.value;
   const passwordUser = event.target.password.value;
   firebase.auth().createUserWithEmailAndPassword(user, passwordUser)
 
@@ -13,14 +28,13 @@ export function registerAccount(event) {
       console.log(errorCode);
       console.log(errorMessage);
       // alert('error');
-    });
+    });*/
 }
 // Iniciar sesión
-export function enterUser(event) {
-  event.preventDefault();
+export function enterUser() {
   console.log('funciona model/store ENTER');
   
-  const userRegistered = event.target.email.value;
+ /* const userRegistered = event.target.email.value;
   const passwordUserRegistered = event.target.password.value;
 
   firebase.auth().signInWithEmailAndPassword(userRegistered, passwordUserRegistered)
@@ -33,9 +47,8 @@ export function enterUser(event) {
       console.log(errorMessage);
 
       // ...
-    });
+    });*/
 }
-
 // Informacion del usuario
 export function infoUser() {
   firebase.auth().onAuthStateChanged((user) => {

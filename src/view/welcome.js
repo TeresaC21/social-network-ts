@@ -9,37 +9,23 @@ import {
 
 export default () => {
   const viewWelcome = document.createElement('div');
- 
   viewWelcome.innerHTML = `
     <form id="form-emailEnter">
       <input name="email" type="email" id="formInputEmail" placeholder="email"></br>
       <input name="password" type="password" id="formInputPassw" placeholder="password"></br>
       <button type="submit" id="btn-email"><a href="#/post">Iniciar sesión</a></button></br>
-      
+
       <button type="submit" id="register"><a href="#/register">regístrate</a></button></br></br>
    </form>`
-  //const divElem = document.createElement('div');
-  //divElem.innerHTML = viewWelcome;
-
+  
   let btn = viewWelcome.querySelector("#btn-email");
   btn.addEventListener('click', enterUser);
 
-  //viewWelcome.querySelector("#btn-email").addEventListener("click", (e) => {
-  // e.preventDefault();
-  //logInFn(userEmail.value, userPassword.value);
-
-  document.getElementById('form-create').appendChild(viewWelcome);
-  //return viewWelcome;
-  //const formEnter = document.querySelector('#btn-email');
-  //formEnter.addEventListener('click', enterUser);
-
-  //return divElem;
-
+  // document.getElementById('form-create').appendChild(viewWelcome);
+  return viewWelcome;
 };
 
-
 /*
-
 document.getElementById('form-create');// creando el div en HTML
   viewWelcome.appendChild(buildElement('FORM', 'Iniciar sesión', '', 'form-email')); // añadir al div (con appendChild) cada uno de los elementos que se crean con el build Element
   viewWelcome.appendChild(buildElement('INPUT', '', 'email', 'form-email'));
@@ -61,3 +47,15 @@ formEnter.addEventListener('submit', enterUser);
 
   buildElement('a', 'Registrar', '', 'form-email'); // al hacer click te enviaria al formulario de registro  
 */
+
+//const divElem = document.createElement('div');
+  //divElem.innerHTML = viewWelcome;
+
+
+  //viewWelcome.querySelector("#btn-email").addEventListener("click", (e) => {
+  // e.preventDefault();
+  //logInFn(userEmail.value, userPassword.value);
+
+   //const formEnter = document.querySelector('#btn-email');
+  //formEnter.addEventListener('click', enterUser);
+  //return divElem;
