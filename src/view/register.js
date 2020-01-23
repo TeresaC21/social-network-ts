@@ -13,6 +13,7 @@ export default () => {
       
       <button type="submit" id="btn-email-reg"><a href="#/home">Registrar</a></button></br>
       <button type="submit" id="btn-email-Welcome"><a href="#/welcome">Iniciar sesión</a></button></br>
+
    </form>`;
 
   const btn = viewRegister.querySelector('#btn-email-reg');
