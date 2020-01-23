@@ -10,11 +10,9 @@ export const changeView = (route) => {
   const container = document.querySelector('#container');
   container.innerHTML = '';
   switch (route) {
-    case '': {
-    }
-    case '#/': {
-      return container.appendChild(components.welcome());
-    }
+    case '':
+    case '#': 
+    case '#/': 
     case '#/welcome': {
       return container.appendChild(components.welcome());
     }
