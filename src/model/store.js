@@ -15,8 +15,7 @@ export const registerEmail = () => {
 } */
 
 // Crear nueva cuenta de correo
-export function registerAccount(event) {
-  event.preventDefault();
+export function registerAccount() {
   console.log('funciona model/store REGISTRAR');
   /* const user = event.target.email.value;
   const passwordUser = event.target.password.value;
