@@ -1,28 +1,23 @@
 import {
-  components
+  components,
 } from './view/components.js';
-import Welcome from './view/welcome.js';
-import Post from './view/post.js';
-import Register from './view/register.js';
 
 export const changeView = (route) => {
   // console.log(router)
   const container = document.querySelector('#container');
   container.innerHTML = '';
   switch (route) {
-    case '': {
-    }
-    case '#/': {
-      return container.appendChild(components.welcome());
-    }
+    case '':
+    case '#':
+    case '#/':
     case '#/welcome': {
       return container.appendChild(components.welcome());
     }
     case '#/register': {
       return container.appendChild(components.register());
     }
-    case '#/post': {
-      return container.appendChild(components.post());
+    case '#/home': {
+      return container.appendChild(components.home());
     }
     default:
       break;
@@ -47,7 +42,7 @@ export const changeView = (route) => {
   // lo insertamos en el elemento #form-post
   Register();
 */
-//export const controlador = {
+// export const controlador = {
 // init: () => {
 // vista.init()
-//},
+// },

@@ -1,3 +1,4 @@
+import { validateEmail } from '../controller/authHandler.js';
 /*
 import { signInAuth } from "./controller/todo.js"
 
@@ -11,13 +12,13 @@ export const registerEmail = () => {
   signInAuth(email, password)
     .then(() => changeHash('/welcome'))
     .catch(() => {})
-}*/
+} */
 
 // Crear nueva cuenta de correo
 export function registerAccount(event) {
   event.preventDefault();
   console.log('funciona model/store REGISTRAR');
- /* const user = event.target.email.value;
+  /* const user = event.target.email.value;
   const passwordUser = event.target.password.value;
   firebase.auth().createUserWithEmailAndPassword(user, passwordUser)
 
@@ -28,13 +29,23 @@ export function registerAccount(event) {
       console.log(errorCode);
       console.log(errorMessage);
       // alert('error');
-    });*/
+    }); */
 }
 // Iniciar sesión
 export function enterUser() {
+  const email = document.querySelector('#formInputEmail').required;
+  const emailValidationResult = validateEmail(email.value);
+  if (emailValidationResult === false) {
+    alert('Please enter the fddd');
+  }
+  const password = document.querySelector('#formInputPassw').required;
+  if (password === false) {
+    alert('Please enter the password');
+  }
+  console.log(emailValidationResult);
   console.log('funciona model/store ENTER');
-  
- /* const userRegistered = event.target.email.value;
+
+  /* const userRegistered = event.target.email.value;
   const passwordUserRegistered = event.target.password.value;
 
   firebase.auth().signInWithEmailAndPassword(userRegistered, passwordUserRegistered)
@@ -47,7 +58,7 @@ export function enterUser() {
       console.log(errorMessage);
 
       // ...
-    });*/
+    }); */
 }
 // Informacion del usuario
 export function infoUser() {
@@ -120,24 +131,22 @@ export const redirectResult = () => firebase.auth().getRedirectResult().then((re
 // **************************** ADD POST FIRESTORE *********************************
 export const addPost = (newPost, name) => {
   console.log('funciona desde model/store ADDPOST');
-  
-  return db.collection("posts").add({
-      descripcion: newPost,
-      first: name
-      
-  })
-  .then(function(docRef) {
-      console.log("Document written with ID: ", docRef.id);
-  })
-  .catch(function(error) {
-      console.error("Error adding document: ", error);
-  });
-}
 
-export const downPost = () => {
-return db.collection("posts").get().then((querySnapshot) => {
+  return db.collection('posts').add({
+    descripcion: newPost,
+    first: name,
+
+  })
+    .then((docRef) => {
+      console.log('Document written with ID: ', docRef.id);
+    })
+    .catch((error) => {
+      console.error('Error adding document: ', error);
+    });
+};
+
+export const downPost = () => db.collection('posts').get().then((querySnapshot) => {
   querySnapshot.forEach((doc) => {
-      console.log(`${doc.id} => ${doc.data()}`);
+    console.log(`${doc.id} => ${doc.data()}`);
   });
 });
-}
