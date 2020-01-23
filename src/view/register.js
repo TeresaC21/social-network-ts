@@ -10,9 +10,10 @@ export default () => {
       <input name="email" type="email" id="formInputEmail-reg" placeholder="email"></br>
       <input name="password" type="password" id="formInputPassw-reg" placeholder="password"></br>
       <input name="password" type="password" id="formInputPassw-confirm" placeholder="confirm password"></br>
+      
+      <button type="submit" id="btn-email-reg"><a href="#/home">Registrar</a></button></br>
+      <button type="submit" id="btn-email-Welcome"><a href="#/welcome">Iniciar sesión</a></button></br>
 
-      <button type="submit" id="btn-email-reg"><a href="#/home"><br>Registrar</button></br>
-   
    </form>`;
 
   const btn = viewRegister.querySelector('#btn-email-reg');

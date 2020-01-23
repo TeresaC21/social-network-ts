@@ -16,6 +16,9 @@ export default () => {
       <button type="submit" id="btn-email"><a href="#/home">Iniciar sesión</a></button></br>
 
       <button type="submit" id="register"><a href="#/register">regístrate</a></button></br></br>
+    <div id=containerEmpty>
+    </div>
+
    </form>`;
 
   const btn = viewWelcome.querySelector('#btn-email');

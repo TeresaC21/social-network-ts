@@ -17,6 +17,7 @@ export const registerEmail = () => {
 // Crear nueva cuenta de correo
 export function registerAccount() {
   console.log('funciona model/store REGISTRAR');
+  
   /* const user = event.target.email.value;
   const passwordUser = event.target.password.value;
   firebase.auth().createUserWithEmailAndPassword(user, passwordUser)
@@ -35,6 +36,7 @@ export function enterUser() {
   const email = document.querySelector('#formInputEmail').required;
   const emailValidationResult = validateEmail(email.value);
   if (emailValidationResult === false) {
+    //let empty = document.querySelector('#containerEmpty');
     alert('Please enter the fddd');
   }
   const password = document.querySelector('#formInputPassw').required;

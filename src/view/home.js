@@ -12,6 +12,15 @@ export default () => {
   const viewPost = document.createElement('div');
 
   viewPost.innerHTML = `
+
+  <button id="btnClosed">Sign off</button>
+    
+  <h2 class="text-center">!HOLA BIENVENIDO¡</h2>
+ <figure class="text-center">
+ <img class="image" src="img/perrito-saluda.gif" alt="perrito saluda">
+ </figure>
+
+
   <form id="form-addPost">
       <input name="post" type="text" id="addPost" placeholder="¿Qué te gustaría compartir hoy?"></br>
       <button type="submit" id="btn-addPost">Publicar</button></br>
@@ -23,7 +32,10 @@ export default () => {
       </select>
       </div> 
       </br>
-   </form>`;
+   </form>
+
+   
+  `;
 
   const btn = viewPost.querySelector('#btn-addPost');
   btn.addEventListener('click', addPost);
