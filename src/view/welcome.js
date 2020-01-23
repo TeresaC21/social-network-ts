@@ -1,8 +1,8 @@
 import {
-  buildElement
+  buildElement,
 } from './creates.js';
 import {
-  enterUser
+  enterUser,
 } from '../model/store.js';
 
 // import { formEnter } from '../controler/todo.js'; // hacer que se importe la funcion formEnter esta en store.js
@@ -12,13 +12,16 @@ export default () => {
   viewWelcome.innerHTML = `
     <form id="form-emailEnter">
       <input name="email" type="email" id="formInputEmail" placeholder="email"></br>
-      <input name="password" type="password" id="formInputPassw" placeholder="password"></br>
-      <button type="submit" id="btn-email"><a href="#/post">Iniciar sesión</a></button></br>
+      <input name="password" type="password" id="formInputPassw" placeholder="password" minlength=1></br>
+      <button type="submit" id="btn-email"><a href="#/home">Iniciar sesión</a></button></br>
 
       <button type="submit" id="register"><a href="#/register">regístrate</a></button></br></br>
-   </form>`
-  
-  let btn = viewWelcome.querySelector("#btn-email");
+    <div id=containerEmpty>
+    </div>
+
+   </form>`;
+
+  const btn = viewWelcome.querySelector('#btn-email');
   btn.addEventListener('click', enterUser);
 
   // document.getElementById('form-create').appendChild(viewWelcome);
@@ -34,28 +37,28 @@ document.getElementById('form-create');// creando el div en HTML
   // Ejecutar funcion enterUser (iniciar sesión) al hacer (click/submit)
 const formEnter = document.querySelector('#form-email');
 formEnter.addEventListener('submit', enterUser);
-  
+
   const buttonFacebook = document.createElement('div');
   const domString = '<div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-auto-logout-link="true" data-use-continue-as="true"></div>';
   buttonFacebook.innerHTML = domString;
   viewWelcome.appendChild(buttonFacebook.firstChild);
-  
+
   const buttonGoogle = document.createElement('div');
   const domDiv = '<div class="g-signin2" data-onsuccess="onSignIn"></div>';
   buttonGoogle.innerHTML = domDiv;
   viewWelcome.appendChild(buttonGoogle.firstChild);
 
-  buildElement('a', 'Registrar', '', 'form-email'); // al hacer click te enviaria al formulario de registro  
+  buildElement('a', 'Registrar', '', 'form-email'); // al hacer click te enviaria al formulario de registro
 */
 
-//const divElem = document.createElement('div');
-  //divElem.innerHTML = viewWelcome;
+// const divElem = document.createElement('div');
+// divElem.innerHTML = viewWelcome;
 
 
-  //viewWelcome.querySelector("#btn-email").addEventListener("click", (e) => {
-  // e.preventDefault();
-  //logInFn(userEmail.value, userPassword.value);
+// viewWelcome.querySelector("#btn-email").addEventListener("click", (e) => {
+// e.preventDefault();
+// logInFn(userEmail.value, userPassword.value);
 
-   //const formEnter = document.querySelector('#btn-email');
-  //formEnter.addEventListener('click', enterUser);
-  //return divElem;
+// const formEnter = document.querySelector('#btn-email');
+// formEnter.addEventListener('click', enterUser);
+// return divElem;
