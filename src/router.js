@@ -1,6 +1,5 @@
-import {
-  components,
-} from './view/components.js';
+import { components } from './view/components.js';
+import { currentUser } from './model/store.js';
 
 export const changeView = (route) => {
   // console.log(router)
@@ -8,6 +7,7 @@ export const changeView = (route) => {
   container.innerHTML = '';
   switch (route) {
     case '':
+      return container.appendChild(components.welcome());
     case '#':
     case '#/':
     case '#/welcome': {
@@ -17,7 +17,8 @@ export const changeView = (route) => {
       return container.appendChild(components.register());
     }
     case '#/home': {
-      return container.appendChild(components.home());
+      const user = currentUser();
+      return container.appendChild(components.home(user));
     }
     default:
       break;

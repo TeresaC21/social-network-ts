@@ -1,81 +1,59 @@
 import { validateEmail } from '../controller/authHandler.js';
-/*
-import { signInAuth } from "./controller/todo.js"
-
-const changeHash = (hash) =>  {
-  location.hash = hash;
-}
-
-export const registerEmail = () => {
-  const email = event.target.email.value;
-  const password = event.target.password.value;
-  signInAuth(email, password)
-    .then(() => changeHash('/welcome'))
-    .catch(() => {})
-} */
 
 // Crear nueva cuenta de correo
-export function registerAccount() {
-  console.log('funciona model/store REGISTRAR');
-  
-  /* const user = event.target.email.value;
-  const passwordUser = event.target.password.value;
-  firebase.auth().createUserWithEmailAndPassword(user, passwordUser)
-
-    .catch((error) => {
+export function registerAccount(event) {
+  const email = document.querySelector('#formInputEmail-reg').value;
+  const emailValidationResult = validateEmail(email);
+  const password = document.querySelector('#formInputPassw-reg').value;
+  console.log(emailValidationResult);
+  if (emailValidationResult === true) {
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch((error) => {
       // Handle Errors here.
+      window.location.hash = '#/register';
+      event.preventDefault();
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-      // alert('error');
-    }); */
+      // [START_EXCLUDE]
+      if (errorCode === 'auth/weak-password') {
+        alert('The password is too weak.');
+      } else {
+        alert(errorMessage);
+      }
+      console.log(error);
+      // [END_EXCLUDE]
+    });
+  }
+  if (emailValidationResult === false) {
+    window.location.hash = '#/register';
+    event.preventDefault();
+    alert('Please enter a valid email');
+  }
 }
+
 // Iniciar sesión
-export function enterUser() {
+export function enterUser(event) {
   const email = document.querySelector('#formInputEmail').required;
   const emailValidationResult = validateEmail(email.value);
   if (emailValidationResult === false) {
-    //let empty = document.querySelector('#containerEmpty');
-    alert('Please enter the fddd');
+    window.location.hash = '#/welcome';
+    // let empty = document.querySelector('#containerEmpty');
+    alert('Please enter an email');
   }
   const password = document.querySelector('#formInputPassw').required;
   if (password === false) {
+    window.location.hash = '#/welcome';
     alert('Please enter the password');
+    event.preventDefault();
   }
   console.log(emailValidationResult);
   console.log('funciona model/store ENTER');
-
-  /* const userRegistered = event.target.email.value;
-  const passwordUserRegistered = event.target.password.value;
-
-  firebase.auth().signInWithEmailAndPassword(userRegistered, passwordUserRegistered)
-
-    .catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-
-      // ...
-    }); */
 }
+
 // Informacion del usuario
 export function infoUser() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       console.log('existe usuario activo');
-      watchUser();
-      // User is signed in.
-      const displayName = user.displayName;
-      const email = user.email;
-      const emailVerified = user.emailVerified;
-      const photoURL = user.photoURL;
-      const isAnonymous = user.isAnonymous;
-      const uid = user.uid;
-      const providerData = user.providerData;
-      // ...
     } else {
       console.log('no existe usuario activo');
       // User is signed out.
@@ -83,10 +61,12 @@ export function infoUser() {
     }
   });
 }
-infoUser();
-
-
-// mostrar con DOM info del usuario
+// Datos del usuario
+export function currentUser() {
+  infoUser();
+  const user = firebase.auth().currentUser;
+  return user;
+}
 
 
 // Cerrar sesión
