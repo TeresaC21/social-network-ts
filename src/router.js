@@ -1,6 +1,16 @@
 import {
-  components,
+  components, vista
 } from './view/components.js';
+ 
+console.log(vista)
+console.log(vista.init);
+
+export const controller = {
+  test: () => {
+    vista.init()
+  }
+  
+}
 
 export const changeView = (route) => {
   // console.log(router)

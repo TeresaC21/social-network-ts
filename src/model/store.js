@@ -132,7 +132,8 @@ export const redirectResult = () => firebase.auth().getRedirectResult().then((re
 // **************************** ADD POST FIRESTORE *********************************
 export const addPost = (newPost, name) => {
   console.log('funciona desde model/store ADDPOST');
-
+  
+/*
   return db.collection('posts').add({
     descripcion: newPost,
     first: name,
@@ -143,11 +144,20 @@ export const addPost = (newPost, name) => {
     })
     .catch((error) => {
       console.error('Error adding document: ', error);
-    });
+    }); */
 };
 
 export const downPost = () => db.collection('posts').get().then((querySnapshot) => {
   querySnapshot.forEach((doc) => {
+
+    
+    `
+    <div>
+    <h1>${doc.id}</h1>
+    </div>
+    
+    `
+
     console.log(`${doc.id} => ${doc.data()}`);
   });
 });

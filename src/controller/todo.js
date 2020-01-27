@@ -28,7 +28,8 @@ export const signInAuth = (email, password) =>
 // Al hacer click en botón sign Off, ejecuta la función closed (cerrar sesión)
 document.querySelector('#btnClosed').addEventListener('click', closed);
 
-
+const btnPost = viewPost.querySelector('#btn-addPost');
+btnPost.addEventListener('click', addPost);
 /*
  export const hashChange = (ruta) => {
  let changeSection = document.getElementById('container');
