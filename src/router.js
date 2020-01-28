@@ -1,5 +1,23 @@
-import { components } from './view/components.js';
+import {
+  components, vista
+} from './view/components.js';
 import { currentUser } from './model/store.js';
+console.log(vista)
+console.log(vista.initEnter);
+
+export const controller = {
+  welcomeRoute: () => {
+    vista.initEnter()
+  },
+  regiRoute: () => {
+    vista.initRegi()
+  },
+  homeRoute: () => {
+    vista.initPost()
+  },
+}
+
+
 
 export const changeView = (route) => {
   // console.log(router)
@@ -11,12 +29,19 @@ export const changeView = (route) => {
     case '#':
     case '#/':
     case '#/welcome': {
-      return container.appendChild(components.welcome());
+      container.appendChild(components.welcome());
+      controller.welcomeRoute();
+      break
+
     }
     case '#/register': {
-      return container.appendChild(components.register());
+      container.appendChild(components.register());
+      controller.regiRoute();
+      break
     }
     case '#/home': {
+      //container.appendChild(components.home());
+      //controller.homeRoute();
       const user = currentUser();
       return container.appendChild(components.home(user));
     }
