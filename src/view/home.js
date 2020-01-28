@@ -38,7 +38,10 @@ export default () => {
       
    </form>
   `; 
-
+/*
+  const btn = viewPost.querySelector('#btn-email-reg');
+  btn.addEventListener('click', addPost);
+*/
   viewPost.classList.add('d-flex','justify-content-center','align-items-center','flex-direction-column','vh-100');
 
   // document.getElementById('contentHome').appendChild(viewPost);

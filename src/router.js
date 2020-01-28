@@ -3,13 +3,18 @@ import {
 } from './view/components.js';
  
 console.log(vista)
-console.log(vista.init);
+console.log(vista.initEnter);
 
 export const controller = {
-  test: () => {
-    vista.init()
-  }
-  
+  welcomeRoute: () => {
+    vista.initEnter()
+  },
+  regiRoute: () => {
+    vista.initRegi()
+  },
+  homeRoute: () => {
+    vista.initPost()
+  },
 }
 
 export const changeView = (route) => {
@@ -21,13 +26,19 @@ export const changeView = (route) => {
     case '#':
     case '#/':
     case '#/welcome': {
-      return container.appendChild(components.welcome());
+      container.appendChild(components.welcome());
+      controller.welcomeRoute();
+      break
+
     }
     case '#/register': {
-      return container.appendChild(components.register());
+      container.appendChild(components.register());
+      controller.regiRoute();
+      break
     }
     case '#/home': {
-      return container.appendChild(components.home());
+      container.appendChild(components.home());
+      controller.homeRoute();
     }
     default:
       break;

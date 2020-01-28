@@ -13,7 +13,7 @@ export const registerEmail = () => {
     .then(() => changeHash('/welcome'))
     .catch(() => {})
 } */
-
+export const model = {}
 // Crear nueva cuenta de correo
 export function registerAccount() {
   console.log('funciona model/store REGISTRAR');
@@ -33,24 +33,38 @@ export function registerAccount() {
 }
 // Iniciar sesión
 export function enterUser() {
+
   const email = document.querySelector('#formInputEmail').required;
+  const password = document.querySelector('#formInputPassw').required;
   const emailValidationResult = validateEmail(email.value);
+//const passValidationResult = validateEmail(password.value);
+
   if (emailValidationResult === false) {
     //let empty = document.querySelector('#containerEmpty');
     alert('Please enter the fddd');
   }
-  const password = document.querySelector('#formInputPassw').required;
   if (password === false) {
     alert('Please enter the password');
   }
   console.log(emailValidationResult);
   console.log('funciona model/store ENTER');
 
-  /* const userRegistered = event.target.email.value;
+  firebase.auth().signInWithEmailAndPassword(emailValidationResult, password)
+  .catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode);
+    console.log(errorMessage);
+
+});
+  
+  /* 
+  const userRegistered = event.target.email.value;
   const passwordUserRegistered = event.target.password.value;
 
   firebase.auth().signInWithEmailAndPassword(userRegistered, passwordUserRegistered)
-
+    .then 
     .catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;
@@ -147,7 +161,8 @@ export const addPost = (newPost, name) => {
     }); */
 };
 
-export const downPost = () => db.collection('posts').get().then((querySnapshot) => {
+export const downPost = () => db.collection('posts').get()
+.then((querySnapshot) => {
   querySnapshot.forEach((doc) => {
 
     
@@ -161,3 +176,32 @@ export const downPost = () => db.collection('posts').get().then((querySnapshot) 
     console.log(`${doc.id} => ${doc.data()}`);
   });
 });
+
+/*
+export function enterUser() {
+
+  const email = document.querySelector('#formInputEmail').required;
+  const password = document.querySelector('#formInputPassw').required;
+  const emailValidationResult = validateEmail(email.value);
+  const passValidationResult = validateEmail(password.value);
+
+  if (emailValidationResult === false) {
+    //let empty = document.querySelector('#containerEmpty');
+    alert('Please enter the fddd');
+  }
+  if (password === false) {
+    alert('Please enter the password');
+  }
+  console.log(emailValidationResult);
+  console.log('funciona model/store ENTER');
+
+  firebase.auth().signInWithEmailAndPassword(emailValidationResult, passValidationResult)
+  .catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode);
+    console.log(errorMessage);
+
+});
+*/
