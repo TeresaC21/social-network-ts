@@ -33,7 +33,7 @@ export function registerAccount() {
 }
 // Iniciar sesión
 export function enterUser() {
-
+/*
   const email = document.querySelector('#formInputEmail').required;
   const password = document.querySelector('#formInputPassw').required;
   const emailValidationResult = validateEmail(email.value);
@@ -48,7 +48,7 @@ export function enterUser() {
   }
   console.log(emailValidationResult);
   console.log('funciona model/store ENTER');
-
+*/
   firebase.auth().signInWithEmailAndPassword(emailValidationResult, password)
   .catch((error) => {
     // Handle Errors here.

@@ -59,7 +59,6 @@ const vista = {
         controller.welcomeRo(newPublic);
       });*/
   }
-
 }
 /*
 const btn = viewPost.querySelector('#btn-addPost');
