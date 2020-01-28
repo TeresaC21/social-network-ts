@@ -1,4 +1,3 @@
-import { buildElement } from './creates.js';
 import {
   registerAccount,
 } from '../model/store.js';
@@ -22,17 +21,3 @@ export default () => {
   // document.getElementById('contentHome').appendChild(viewRegister);
   return viewRegister;
 };
-/*
- // Formulario de registro
- const viewRegistrar = document.getElementById('form-create');
- viewRegistrar.appendChild(buildElement('FORM', '', '', 'form-register-email'));
- viewRegistrar.appendChild(buildElement('INPUT', '', 'email', 'form-register-email'));
- viewRegistrar.appendChild(buildElement('INPUT', '', 'password', 'form-register-email'));
- viewRegistrar.appendChild(buildElement('BUTTON', 'Registrar', '', 'form-register-email')); // iniciar sesion te envia al home, muestra todo tu perfil
-
-   const divElem = document.createElement('div');
-   divElem.innerHTML = viewRegistrar;
-
-   return divElem;
-  }
-   */
