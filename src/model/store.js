@@ -7,28 +7,34 @@ export function registerAccount(event) {
   const password = document.querySelector('#formInputPassw-reg').value;
   console.log(emailValidationResult);
   if (emailValidationResult === true) {
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch((error) => {
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then((user) => {
+        console.log(user);
+        window.location.hash = '#/home';
+      })
+      .catch((error) => {
       // Handle Errors here.
-      window.location.hash = '#/register';
-      event.preventDefault();
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // [START_EXCLUDE]
-      if (errorCode === 'auth/weak-password') {
-        alert('The password is too weak.');
-      } else {
-        alert(errorMessage);
-      }
-      console.log(error);
+        window.location.hash = '#/register';
+        event.preventDefault();
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // [START_EXCLUDE]
+        if (errorCode === 'auth/weak-password') {
+          alert('The password is too weak.');
+        } else {
+          alert(errorMessage);
+        }
+        console.log(error);
       // [END_EXCLUDE]
-    });
-  }
-  if (emailValidationResult === false) {
+      });
+  } else {
+    (emailValidationResult === false);
     window.location.hash = '#/register';
     event.preventDefault();
     alert('Please enter a valid email');
   }
 }
+
 
 // Iniciar sesión
 export function enterUser(event) {
