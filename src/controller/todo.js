@@ -30,26 +30,4 @@ document.querySelector('#btnClosed').addEventListener('click', closed);
 
 const btnPost = document.querySelector('#btn-addPost');
 btnPost.addEventListener('click', addPost);
-/*
- export const hashChange = (ruta) => {
- let changeSection = document.getElementById('container');
- changeSection.innerHTML = '';
 
-  switch (ruta) {
-    case '':
-    case '#':
-    case '#/':
-      return changeSection.appendChild(components.welcome());
-    case '#/welcome':
-      return changeSection.appendChild(components.welcome());
-    case '#/register':
-      return changeSection.appendChild(components.register());
-    case '#/post':
-      return changeSection.appendChild(components.post());
-
-    default:
-      break;
-  }
-  console.log(ruta);
- // return null;
-}; */
