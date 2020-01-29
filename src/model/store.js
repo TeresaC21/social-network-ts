@@ -10,11 +10,18 @@ export function registerAccount(event) {
   const email = document.querySelector('#formInputEmail-reg').value;
   const emailValidationResult = validateEmail(email);
   const password = document.querySelector('#formInputPassw-reg').value;
+  const name = document.querySelector('#formInputName-reg').value;
   console.log(emailValidationResult);
+
   if (emailValidationResult === true) {
     firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then((user) => {
-        console.log(user);
+      .then(() => {
+        const user = firebase.auth().currentUser;
+        user.updateProfile({
+          displayName: name,
+        });
+      })
+      .then(() => {
         window.location.hash = '#/home';
       })
       .catch((error) => {
@@ -65,26 +72,6 @@ export function enterUser(event) {
         console.log('funciona model/store ENTER');
       });
   }
-
-
-  /*
-
-  */
-  /*
-  const userRegistered = event.target.email.value;
-  const passwordUserRegistered = event.target.password.value;
-
-  firebase.auth().signInWithEmailAndPassword(userRegistered, passwordUserRegistered)
-    .then
-    .catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-
-      // ...
-    }); */
 }
 
 // Informacion del usuario
@@ -105,7 +92,6 @@ export function currentUser() {
   const user = firebase.auth().currentUser;
   return user;
 }
-
 
 // Cerrar sesión
 export function closed() {
