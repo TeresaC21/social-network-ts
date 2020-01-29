@@ -16,8 +16,8 @@ export default () => {
 
   const btn = viewRegister.querySelector('#btn-email-reg');
   btn.addEventListener('click', registerAccount);
-  
-  viewRegister.classList.add('d-flex','justify-content-center','align-items-center','flex-direction-column','vh-100');
+
+  viewRegister.classList.add('d-flex', 'justify-content-center', 'align-items-center', 'flex-direction-column', 'vh-100');
   // document.getElementById('contentHome').appendChild(viewRegister);
   return viewRegister;
 };

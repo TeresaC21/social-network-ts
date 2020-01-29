@@ -4,10 +4,10 @@ import {
 
 export default (user) => {
   const viewPost = document.createElement('div');
-  
+
   viewPost.innerHTML = `
 
-    <button id="btnClosed">Sign off</button>
+    <button class="buttons" type="submit" id="btnClosed"><a href="#/welcome">Sign Out</a></button></br>
     
   <h2 class="text-center">${user.email}</h2>
  <figure class="text-center">
@@ -32,21 +32,21 @@ export default (user) => {
       </div>
       
    </form>
-  `; 
-/*
+  `;
+  /*
   const btn = viewPost.querySelector('#btn-email-reg');
   btn.addEventListener('click', addPost);
 */
-  viewPost.classList.add('d-flex','justify-content-center','align-items-center','flex-direction-column','vh-100');
+  viewPost.classList.add('d-flex', 'justify-content-center', 'align-items-center', 'flex-direction-column', 'vh-100');
 
   return viewPost;
 };
 
 
 // export default () => {
-/*export const watchUser = `
+/* export const watchUser = `
      <button id="btnClosed">Sign off</button>
-    
+
      <h2 class="text-center">!HOLA BIENVENIDO¡</h2>
     <figure class="text-center">
     <img class="image" src="img/perrito-saluda.gif" alt="perrito saluda">
