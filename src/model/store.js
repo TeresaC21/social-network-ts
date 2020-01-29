@@ -134,62 +134,21 @@ export const redirectResult = () => firebase.auth().getRedirectResult().then((re
 
 
 // **************************** ADD POST FIRESTORE *********************************
-export const addPost = (newPost, name) => {
+const db = firebase.firestore();
+
+export const addPost = () => {
   console.log('funciona desde model/store ADDPOST');
-
-  /*
-    return db.collection('posts').add({
-      descripcion: newPost,
-      first: name,
-
+  const postUser = document.querySelector('#addPost').value;
+  db.collection('post').add({
+    descripcion: postUser,
+  })
+    .then((docRef) => {
+      console.log('Document written with ID: ', docRef.id);
+      document.querySelector('#published').innerHTML = postUser;
+      document.querySelector('#addPost').reset();
+      window.location.hash = '#/home';
     })
-      .then((docRef) => {
-        console.log('Document written with ID: ', docRef.id);
-      })
-      .catch((error) => {
-        console.error('Error adding document: ', error);
-      }); */
-};
-
-export const downPost = () => db.collection('posts').get()
-  .then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      `
-    <div>
-    <h1>${doc.id}</h1>
-    </div>
-    
-    `;
-
-      console.log(`${doc.id} => ${doc.data()}`);
+    .catch((error) => {
+      console.error('Error adding document: ', error);
     });
-  });
-
-/*
-export function enterUser() {
-
-  const email = document.querySelector('#formInputEmail').required;
-  const password = document.querySelector('#formInputPassw').required;
-  const emailValidationResult = validateEmail(email.value);
-  const passValidationResult = validateEmail(password.value);
-
-  if (emailValidationResult === false) {
-    //let empty = document.querySelector('#containerEmpty');
-    alert('Please enter the fddd');
-  }
-  if (password === false) {
-    alert('Please enter the password');
-  }
-  console.log(emailValidationResult);
-  console.log('funciona model/store ENTER');
-
-  firebase.auth().signInWithEmailAndPassword(emailValidationResult, passValidationResult)
-  .catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorCode);
-    console.log(errorMessage);
-
-});
-*/
+};
