@@ -1,5 +1,5 @@
 import {
-  addPost,
+  addPost, closed
 } from '../model/store.js';
 
 export default (user) => {
@@ -34,6 +34,8 @@ export default (user) => {
    </form>
   `;
   viewPost.querySelector('#btn-addPost').addEventListener('click', addPost);
+  
+  viewPost.querySelector('#btnClosed').addEventListener('click', closed);
   viewPost.classList.add('d-flex', 'justify-content-center', 'align-items-center', 'flex-direction-column', 'vh-100');
 
   return viewPost;

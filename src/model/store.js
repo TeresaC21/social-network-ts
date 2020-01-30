@@ -98,6 +98,8 @@ export function closed() {
   firebase.auth().signOut()
     .then(() => {
       console.log('Saliendo...');
+      //document.querySelector('#btnClosed');
+      window.location.hash = '#/welcome';
     })
     .catch((error) => {
       console.log(error);
