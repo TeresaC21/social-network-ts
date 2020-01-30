@@ -49,5 +49,3 @@ export const changeView = (route) => {
   console.log(route);
   return null;
 };
-
-
