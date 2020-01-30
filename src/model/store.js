@@ -132,7 +132,7 @@ export const redirectResult = () => firebase.auth().getRedirectResult().then((re
   console.log(credential);
 });
 
-
+// git
 // **************************** ADD POST FIRESTORE *********************************
 const db = firebase.firestore();
 
