@@ -17,7 +17,7 @@ export default (user) => {
 
   <form id="form-addPost">
       <input name="post" type="text" id="addPost" placeholder="¿Qué te gustaría compartir hoy?"></br>
-      <button type="submit" id="btn-addPost">Publicar</button></br>
+      <button type="submit" id="btn-addPost"><a href="#/home">Publicar</button></a></br>
 
       <div>
       <button> Galeria </button>
