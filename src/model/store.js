@@ -4,7 +4,7 @@ import {
 
 export const model = {};
 
-// Crear nueva cuenta de correo
+// Crear nueva cuenta de correofdsf
 export function registerAccount(event) {
   event.preventDefault();
   const email = document.querySelector('#formInputEmail-reg').value;
@@ -54,8 +54,7 @@ export function enterUser(event) {
 
   if (emailValidationResult === true) {
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then((user) => {
-        console.log(user);
+      .then((user) => {//console.log(user);
         window.location.hash = '#/home';
       })
       .catch((error) => {
@@ -99,12 +98,72 @@ export function closed() {
     .then(() => {
       console.log('Saliendo...');
       //document.querySelector('#btnClosed');
-      window.location.hash = '#/welcome';
+      // window.location.hash = '#/welcome';
+      window.location.reload() = '#/welcome'
     })
     .catch((error) => {
       console.log(error);
     });
 }
+
+// **************************** ADD POST FIRESTORE *********************************
+
+export const addPost = () => {
+  const db = firebase.firestore();
+  //console.log('funciona desde model/store ADDPOST');
+  const postUser = document.querySelector('#addPost').value;
+  db.collection('post').add({
+      descripcion: postUser,
+    })
+    .then((docRef) => {
+      console.log('Document written with ID: ', docRef.id);
+      //document.querySelector('#published').innerHTML = postUser;
+      //console.log(postUser);/ window.location.hash = '#/home';
+      document.querySelector('#addPost').value = '';
+
+    })
+    .catch((error) => {
+      console.error('Error adding document: ', error);
+    });
+}
+
+export const postAll = () => {
+  const db = firebase.firestore();
+  db.collection("post").onSnapshot((querySnapshot) => {
+    //document.querySelector('#published').innerHTML = '';
+    querySnapshot.forEach((doc) => {
+      console.log(`${doc.id} => ${doc.data().descripcion}`);
+      document.querySelector('#publishedAll').innerHTML += `
+      <tr> 
+        <th>${doc.id}</li>
+        <td>${doc.data().descripcion}</td>
+        <td><button id='delt' onclick="deletePost('${doc.id}')">Eliminar</button></td> <td><button>Editar</button></td>
+      </tr>
+      `;
+    });
+  });
+}
+
+export const deletePost = (id) => {
+  console.log(id);
+  
+  //<li><button id='delt' onclick="deli('${doc.id}')">Eliminar</button></li> <li><button>Editar</button></li>
+  // e.preventDefault();
+  //document.querySelector('#delt').addEventListener('click', 
+  window.location.hash = '#/home';
+  db.collection('post').doc(id).delete()
+    .then(function () {
+      console.log("Document successfully deleted!");
+      window.location.hash = '#/home';
+    }).catch(function (error) {
+      console.error("Error removing document: ", error);
+    });
+  window.location.hash = '#/home';
+}
+
+//export const addPost = (id,e) => {
+// preventDefault(e);
+//}
 
 // ***********************INICIAR SESIÓN CON FACEBOOK Y GOOGLE**************************************
 const providerFacebook = new firebase.auth.FacebookAuthProvider();
@@ -135,22 +194,3 @@ export const redirectResult = () => firebase.auth().getRedirectResult().then((re
 });
 
 // git
-// **************************** ADD POST FIRESTORE *********************************
-const db = firebase.firestore();
-
-export const addPost = () => {
-  console.log('funciona desde model/store ADDPOST');
-  const postUser = document.querySelector('#addPost').value;
-  db.collection('post').add({
-    descripcion: postUser,
-  })
-    .then((docRef) => {
-      console.log('Document written with ID: ', docRef.id);
-      document.querySelector('#published').innerHTML = postUser;
-      document.querySelector('#addPost').reset();
-      window.location.hash = '#/home';
-    })
-    .catch((error) => {
-      console.error('Error adding document: ', error);
-    });
-};

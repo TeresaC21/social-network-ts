@@ -1,9 +1,9 @@
 import {
-  components, vista,
+  components
 } from './view/components.js';
 import { currentUser } from './model/store.js';
 
-console.log(vista);
+/* console.log(vista);
 console.log(vista.initEnter);
 
 export const controller = {
@@ -16,7 +16,7 @@ export const controller = {
   homeRoute: () => {
     vista.initPost();
   },
-};
+}; */
 
 export const changeView = (route) => {
   // console.log(router)
@@ -24,24 +24,26 @@ export const changeView = (route) => {
   container.innerHTML = '';
   switch (route) {
     case '':
-      return container.appendChild(components.welcome());
+     container.appendChild(components.welcome());
+     break
     case '#':
     case '#/':
     case '#/welcome': {
       container.appendChild(components.welcome());
-      controller.welcomeRoute();
+      //controller.welcomeRoute();
       break;
     }
     case '#/register': {
       container.appendChild(components.register());
-      controller.regiRoute();
+     // controller.regiRoute();
       break;
     }
     case '#/home': {
       // container.appendChild(components.home());
       // controller.homeRoute();
       const user = currentUser();
-      return container.appendChild(components.home(user));
+       container.appendChild(components.home(user));
+       break;
     }
     default:
       break;
