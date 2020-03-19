@@ -74,16 +74,9 @@ export function enterUser(event) {
 }
 
 // Informacion del usuario
-export function infoUser() {
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      console.log('existe usuario activo');
-    } else {
-      console.log('no existe usuario activo');
-      // User is signed out.
-      // ...
-    }
-  });
+export function infoUser(cb) {
+  firebase.auth().onAuthStateChanged(cb);
+
 }
 // Datos del usuario
 export function currentUser() {
@@ -113,8 +106,10 @@ export const addPost = () => {
     })
     .then((docRef) => {
       console.log('Document written with ID: ', docRef.id);
-      //document.querySelector('#published').innerHTML = postUser;//console.log(postUser);/ window.location.hash = '#/home';
       document.querySelector('#addPost').value = '';
+      //document.querySelector('#published').innerHTML = postUser;
+      window.location.hash = '#/home';
+     //document.querySelector('#publishedAll').value = '';
     })
     .catch((error) => {
       console.error('Error adding document:', error);
@@ -124,6 +119,7 @@ export const addPost = () => {
 export const postAll = () => {
   const db = firebase.firestore();
   db.collection("post").onSnapshot((querySnapshot) => {
+    document.querySelector('#publishedAll').innerHTML = '';
     querySnapshot.forEach((doc) => {
       //console.log(`${doc.id} => ${doc.data().descripcion}`, 'PRUE');
       let trCreate = document.createElement('tr');
@@ -134,20 +130,20 @@ export const postAll = () => {
       <br>
       `;
       trCreate.querySelector('#delt').addEventListener('click', () => deletePost(doc.id))
-      return document.querySelector('#publishedAll').appendChild(trCreate);
+      document.querySelector('#publishedAll').appendChild(trCreate);
     });
   })
 }
 
 export const deletePost = (id) => {
-  const db = firebase.firestore();
   console.log(id, 'ID CONSOLE');
+  const db = firebase.firestore();
   db.collection('post').doc(id).delete()
     .then(function () {
       console.log("Document successfully deleted!");
      // document.querySelector('#publishedAll').value = location.reload();
       window.location.hash = '#/home';
-      location.reload();
+      //location.reload();
     }).catch(function (error) {
       console.error("Error removing document: ", error);
       window.location.hash = '#/home';

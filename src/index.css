@@ -47,6 +47,11 @@ a {
     height: 10rem;
 }
 
+#btnClosed{
+    position: absolute;
+    top: 5rem;
+
+}
 #form-addPost {
     padding: 20%;
 }

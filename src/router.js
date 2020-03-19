@@ -1,7 +1,7 @@
 import {
   components
 } from './view/components.js';
-import { currentUser } from './model/store.js';
+import { currentUser, infoUser } from './model/store.js';
 
 /* console.log(vista);
 console.log(vista.initEnter);
@@ -41,8 +41,17 @@ export const changeView = (route) => {
     case '#/home': {
       // container.appendChild(components.home());
       // controller.homeRoute();
-      const user = currentUser();
-       container.appendChild(components.home(user));
+      infoUser((user) => {
+        if (user) {
+          container.appendChild(components.home(user));
+        } else {
+          // redirigir al login
+          container.appendChild(components.welcome());
+        }
+      })
+     
+  
+       
        break;
     }
     default:

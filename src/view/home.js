@@ -5,6 +5,7 @@ import {
 export default (user) => {
   const viewPost = document.createElement('div');
   viewPost.innerHTML = `
+  
     <button class="buttons" type="submit" id="btnClosed"><a href="#/welcome">Sign Out</a></button></br>
     
     <h2 class="text-center">${user.email}</h2>
@@ -32,17 +33,7 @@ export default (user) => {
   viewPost.querySelector('#btn-addPost').addEventListener('click', addPost);
   viewPost.querySelector('#btnClosed').addEventListener('click', closed);
   postAll()
- // viewPost.querySelector('#publishedAll').add(postAll)
- // viewPost.querySelector('#btnX').addEventListener('click', deletes);
 
-  viewPost.classList.add('d-flex', 'justify-content-center', 'align-items-center', 'flex-direction-column', 'vh-100');
- /*  let image = viewPost.querySelector('.image');
-  function gif() {
-    setTimeout(() => {
-      requestAnimationFrame(image) 
-    }, 3000);
-  }
-  gif()         <h1 id="btnX">X</h1>*/
-  
+  viewPost.classList.add('d-flex', 'justify-content-center', 'align-items-center', 'flex-direction-column', 'vh-100');  
   return viewPost;
 };
