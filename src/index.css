@@ -54,11 +54,34 @@ a {
     color: white;
 }
 
-#delt{
+.buttons-h {
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
-    padding-bottom: 5px;
-    background-color: rgb(189, 163, 163);
+    border: none; 
+    font-size: 0.8rem;
+    background-color: rgb(233, 233, 233);
+}
+
+.buttons-h:hover {
+    background-color: #E7E247;
+    color: white;
+}
+
+.div-home{
+    display: flex;
+    flex-direction: row;
+    margin-left: 60%;
+    margin-bottom: 15%; 
+}
+
+ #btn-addPost {
+     margin-left: 70%;
+    background-color: #E7E247;
+} 
+
+#delt{
+    padding-bottom: 3px;
+    background-color: rgb(215, 196, 163);
     margin-left: 25px;
     border: none; 
 }
@@ -152,7 +175,6 @@ td{
         font-size: 0.7rem;
     }
     
-
 }
 
 /*
