@@ -1,25 +1,9 @@
 import {
   components
 } from './view/components.js';
-import { currentUser, infoUser } from './model/store.js';
-
-/* console.log(vista);
-console.log(vista.initEnter);
-
-export const controller = {
-  welcomeRoute: () => {
-    vista.initEnter();
-  },
-  regiRoute: () => {
-    vista.initRegi();
-  },
-  homeRoute: () => {
-    vista.initPost();
-  },
-}; */
+import { infoUser } from './model/store.js';
 
 export const changeView = (route) => {
-  // console.log(router)
   const container = document.querySelector('#container');
   container.innerHTML = '';
   switch (route) {
@@ -30,17 +14,13 @@ export const changeView = (route) => {
     case '#/':
     case '#/welcome': {
       container.appendChild(components.welcome());
-      //controller.welcomeRoute();
       break;
     }
     case '#/register': {
       container.appendChild(components.register());
-     // controller.regiRoute();
       break;
     }
     case '#/home': {
-      // container.appendChild(components.home());
-      // controller.homeRoute();
       infoUser((user) => {
         if (user) {
           container.appendChild(components.home(user));
@@ -49,9 +29,6 @@ export const changeView = (route) => {
           container.appendChild(components.welcome());
         }
       })
-     
-  
-       
        break;
     }
     default:

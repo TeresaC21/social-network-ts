@@ -12,11 +12,10 @@ export default () => {
           <img class="image" src="img/lion.png" alt="perrito saluda">
         </figure>
 
-    <input name="nombre" type="text" id="formInputName-reg" placeholder="Name"></br>
-    <input name="email" type="email" id="formInputEmail-reg" placeholder="email"></br>
-    <input name="password" type="password" id="formInputPassw-reg" placeholder="Password"></br>
+          <input name="nombre" type="text" id="formInputName-reg" placeholder="Name"></br>
+          <input name="email" type="email" id="formInputEmail-reg" placeholder="email"></br>
+          <input name="password" type="password" id="formInputPassw-reg" placeholder="Password"></br>
   
-      
       <button class="buttons" type="submit" id="btn-email-reg"><a href="#/home">Registrar</a></button></br>
       <button class="buttons" type="submit" id="btn-email-Welcome"><a href="#/welcome">Iniciar sesión</a></button></br>
    </form>`;

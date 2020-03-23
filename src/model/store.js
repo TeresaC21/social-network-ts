@@ -2,9 +2,8 @@ import {
   validateEmail,
 } from '../controller/authHandler.js';
 
+// ********************** Crear nueva cuenta de correo
 export const model = {};
-
-// Crear nueva cuenta de correofdsf
 export function registerAccount(event) {
   event.preventDefault();
   const email = document.querySelector('#formInputEmail-reg').value;
@@ -44,7 +43,7 @@ export function registerAccount(event) {
   }
 }
 
-// Iniciar sesión
+// *************************Iniciar sesión
 export function enterUser(event) {
   event.preventDefault();
   const email = document.querySelector('#formInputEmail').value;
@@ -73,19 +72,19 @@ export function enterUser(event) {
   }
 }
 
-// Informacion del usuario
+// ************************ Informacion del usuario
 export function infoUser(cb) {
   firebase.auth().onAuthStateChanged(cb);
 
 }
-// Datos del usuario
+// *********************** Datos del usuario
 export function currentUser() {
   infoUser();
   const user = firebase.auth().currentUser;
   return user;
 }
 
-// Cerrar sesión
+// ************************ Cerrar sesión
 export function closed() {
   firebase.auth().signOut()
     .then(() => {
@@ -109,7 +108,6 @@ export const addPost = () => {
       document.querySelector('#addPost').value = '';
       //document.querySelector('#published').innerHTML = postUser;
       window.location.hash = '#/home';
-     //document.querySelector('#publishedAll').value = '';
     })
     .catch((error) => {
       console.error('Error adding document:', error);
@@ -121,7 +119,6 @@ export const postAll = () => {
   db.collection("post").onSnapshot((querySnapshot) => {
     document.querySelector('#publishedAll').innerHTML = '';
     querySnapshot.forEach((doc) => {
-      //console.log(`${doc.id} => ${doc.data().descripcion}`, 'PRUE');
       let trCreate = document.createElement('tr');
       trCreate.innerHTML = ` 
       <td>${doc.data().descripcion}</td>
@@ -140,9 +137,7 @@ export const deletePost = (id) => {
   db.collection('post').doc(id).delete()
     .then(function () {
       console.log("Document successfully deleted!");
-     // document.querySelector('#publishedAll').value = location.reload();
       window.location.hash = '#/home';
-      //location.reload();
     }).catch(function (error) {
       console.error("Error removing document: ", error);
       window.location.hash = '#/home';
