@@ -124,9 +124,8 @@ export const postAll = () => {
       //console.log(`${doc.id} => ${doc.data().descripcion}`, 'PRUE');
       let trCreate = document.createElement('tr');
       trCreate.innerHTML = ` 
-      <th>${doc.id}</li>
       <td>${doc.data().descripcion}</td>
-      <td><button id="delt"><a href="#/home">Eliminar</button></td> <td><button>Editar</button></td>
+      <td><button id="delt"><a href="#/home">Eliminar</button></td>
       <br>
       `;
       trCreate.querySelector('#delt').addEventListener('click', () => deletePost(doc.id))

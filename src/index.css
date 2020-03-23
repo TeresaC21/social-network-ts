@@ -5,6 +5,7 @@
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
 }*/
+
 span {
     color: red;
 }
@@ -15,31 +16,59 @@ form {
     flex-direction: column;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 25%;
+    margin: 30%;
 }
 
 input {
     border: none;
-    font-size: 0.8rem;
+    font-size: 1rem;
     z-index: 5;
     box-shadow: -1px 4px 8px rgb(107, 104, 98);
+    font-family: 'Courgette', cursive;
+    font-family: 'Gotu', sans-serif;    
+}
+#addPost{
+    height: 5rem;
+    width: 17rem;
 }
 
 a {
     text-decoration: none;
     color: #003049;
 }
-
+.petsbook{
+    font-size: 4rem;
+    font-family: 'Courgette', cursive, sans-serif;
+    color: gray;
+}
 .buttons {
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     padding-bottom: 10px;
     border: none; 
+    font-size: 1rem;
 }
 
 .buttons:hover {
     background-color: #E7E247;
-    /* Green */
     color: white;
+}
+
+#delt{
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    padding-bottom: 5px;
+    background-color: rgb(189, 163, 163);
+    margin-left: 25px;
+    border: none; 
+}
+
+td{
+    font-size: 1rem;
+    color: gray;
+    text-decoration-line: underline;
+    font-family: 'Courgette', cursive;
+    font-family: 'Gotu', sans-serif;
 }
 
 .image {
@@ -47,13 +76,18 @@ a {
     height: 10rem;
 }
 
-#btnClosed{
-    position: absolute;
-    top: 5rem;
-
+.wall-img {
+    width: 10rem;
+    height: 8rem;
 }
+
 #form-addPost {
     padding: 20%;
+    font-family: 'Courgette', cursive;
+    font-family: 'Gotu', sans-serif;
+}
+.text-center{
+    color: gray;
 }
 
 .m-auto {
@@ -92,19 +126,32 @@ a {
     height: 100vh;
 }
 
-@media (min-width: 768px) {
+@media only screen and (max-width: 600px) {
     .w-60 {
         width: 60%;
     }
 
     form {
         height: 80%;
+        margin: 10%;
+        padding: 11%;
     }
 
     .image {
-        width: 15rem;
-        height: 10rem;
+        width: 9rem;
+        height: 7rem;
     }
+     input{
+        font-size: 0.8rem;
+    }
+    .petsbook{
+        font-size: 2rem;
+    } 
+    .buttons {
+        padding-bottom: 7px;
+        font-size: 0.7rem;
+    }
+    
 
 }
 
