@@ -1,6 +1,6 @@
 import {
   enterUser,
-} from '../model/store.js';
+} from '../model/data.js';
 
 
 export default () => {

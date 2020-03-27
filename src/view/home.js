@@ -1,6 +1,6 @@
 import {
   addPost, closed, postAll, 
-} from '../model/store.js';
+} from '../model/data.js'; // NO - CONTROLLER
 
 export default (user) => {
   const viewPost = document.createElement('div');

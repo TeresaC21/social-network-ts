@@ -1,6 +1,6 @@
 import {
   registerAccount,
-} from '../model/store.js';
+} from '../model/data.js';
 
 export default () => {
   const viewRegister = document.createElement('div');

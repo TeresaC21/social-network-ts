@@ -1,9 +1,9 @@
 import {
-  validateEmail,
-} from '../controller/authHandler.js';
+  validateEmail 
+} from '../controller/valid.js'; // YES - AND HERE CONTROLLER
 
-// ********************** Crear nueva cuenta de correo
-export const model = {};
+// ********************** CREATE NEW ACCOUNT
+//export const model = {};
 export function registerAccount(event) {
   event.preventDefault();
   const email = document.querySelector('#formInputEmail-reg').value;
@@ -18,6 +18,7 @@ export function registerAccount(event) {
         const user = firebase.auth().currentUser;
         user.updateProfile({
           displayName: name,
+          //photoUrl: string
         });
       })
       .then(() => {
@@ -43,7 +44,7 @@ export function registerAccount(event) {
   }
 }
 
-// *************************Iniciar sesión
+// ************************* LOGIN USER
 export function enterUser(event) {
   event.preventDefault();
   const email = document.querySelector('#formInputEmail').value;
@@ -72,24 +73,25 @@ export function enterUser(event) {
   }
 }
 
-// ************************ Informacion del usuario
+// ************************ INFO USER
 export function infoUser(cb) {
   firebase.auth().onAuthStateChanged(cb);
 
 }
-// *********************** Datos del usuario
+
 export function currentUser() {
   infoUser();
   const user = firebase.auth().currentUser;
   return user;
 }
 
-// ************************ Cerrar sesión
+// ************************ SIGN OUT
 export function closed() {
   firebase.auth().signOut()
     .then(() => {
       console.log('Saliendo...');
-      window.location.reload() = '#/welcome'
+      // window.location.hash = '#/welcome'
+       window.location.reload() = '#/welcome';
     })
     .catch((error) => {
       console.log(error);
@@ -97,6 +99,7 @@ export function closed() {
 }
 
 // **************************** ADD POST FIRESTORE *********************************
+//ADD
 export const addPost = () => {
   const db = firebase.firestore();
   const postUser = document.querySelector('#addPost').value;
@@ -113,24 +116,33 @@ export const addPost = () => {
       console.error('Error adding document:', error);
     });
 }
-
+//QUERY SNAPSHOT - CONSULTA DATA
 export const postAll = () => {
   const db = firebase.firestore();
-  db.collection("post").onSnapshot((querySnapshot) => {
-    document.querySelector('#publishedAll').innerHTML = '';
-    querySnapshot.forEach((doc) => {
-      let trCreate = document.createElement('tr');
-      trCreate.innerHTML = ` 
-      <td>${doc.data().descripcion}</td>
-      <td><button id="delt"><a href="#/home">Eliminar</button></td>
-      <br>
-      `;
-      trCreate.querySelector('#delt').addEventListener('click', () => deletePost(doc.id))
-      document.querySelector('#publishedAll').appendChild(trCreate);
-    });
-  })
+  let unsubscribe;
+  //try {
+    unsubscribe = db.collection("post").onSnapshot((querySnapshot) => {
+      document.querySelector('#publishedAll').innerHTML = '';
+      querySnapshot.forEach((doc) => {
+        let trCreate = document.createElement('tr');
+        trCreate.innerHTML = ` 
+        <td>${doc.data().descripcion}</td>
+        <td><button id="delt"><a href="#/home">Eliminar</button></td>
+        <br>
+        `;
+        trCreate.querySelector('#delt').addEventListener('click', () => deletePost(doc.id))
+        document.querySelector('#publishedAll').appendChild(trCreate);
+      });
+    })
+  /* } catch (e) {
+    if (unsubscribe) {
+      unsubscribe()
+    }
+  } */
+  
 }
 
+// *********************** DELETE POST 
 export const deletePost = (id) => {
   console.log(id, 'ID CONSOLE');
   const db = firebase.firestore();

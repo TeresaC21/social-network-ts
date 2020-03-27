@@ -1,15 +1,13 @@
-import {
-  components
-} from './view/components.js';
-import { infoUser } from './model/store.js';
+import { components } from '../view/components.js'; // YES
+import { infoUser } from '../model/data.js'; // AND CONTROLLER
 
 export const changeView = (route) => {
   const container = document.querySelector('#container');
   container.innerHTML = '';
   switch (route) {
     case '':
-     container.appendChild(components.welcome());
-     break
+      container.appendChild(components.welcome());
+      break
     case '#':
     case '#/':
     case '#/welcome': {
@@ -29,7 +27,7 @@ export const changeView = (route) => {
           container.appendChild(components.welcome());
         }
       })
-       break;
+      break;
     }
     default:
       break;

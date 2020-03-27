@@ -1,4 +1,4 @@
-import { changeView } from './router.js';
+import { changeView } from './controller/router.js';
 
 export const init = () => {
   // console.log(window.location.hash);
