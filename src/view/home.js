@@ -6,7 +6,7 @@ export default (user) => {
   const viewPost = document.createElement('div');
   viewPost.innerHTML = `
   <form id="form-addPost">
-      <button class="buttons-h" type="submit" id="btnClosed"><a href="#/welcome">Sign Out</a></button></br>
+      <button class="buttons-h" type="submit" id="btnClosed"><a href="#/welcome">Cerrar sesión</a></button></br>
     
       <h2 class="text-center">${user.email}</h2>
          <figure class="text-center">
