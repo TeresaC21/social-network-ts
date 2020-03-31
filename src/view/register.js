@@ -20,9 +20,35 @@ export default () => {
       <button class="buttons" type="submit" id="btn-email-Welcome"><a href="#/welcome">Iniciar sesión</a></button></br>
    </form>`;
 
-  viewRegister.querySelector('#btn-email-reg').addEventListener('click', registerAccount);
+  // ********************* REGISTER NEW ACCOUNT ****************************
+  const initReg = (event) => {
+    event.preventDefault();
+    const email = document.querySelector('#formInputEmail-reg').value;
+    const password = document.querySelector('#formInputPassw-reg').value;
+    const name = document.querySelector('#formInputName-reg').value;
+    registerAccount(email, password, name)
+      .then(() => {
+        window.location.hash = '#/home';
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        window.location.hash = '#/register';
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // [START_EXCLUDE]
+        if (errorCode === 'auth/weak-password') {
+          alert('The password is too weak.');
+        } else {
+          alert(errorMessage);
+        }
+        console.log(error);
+        // [END_EXCLUDE]
+      });
+  }
+
+  viewRegister.querySelector('#btn-email-reg').addEventListener('click', initReg);
   viewRegister.classList.add('d-flex', 'justify-content-center', 'align-items-center', 'flex-direction-column', 'vh-100');
-  
+
   return viewRegister;
 };
 //<input name="password" type="password" id="formInputPassw-confirm" placeholder="Confirm Password"></br>

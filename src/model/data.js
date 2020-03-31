@@ -1,19 +1,13 @@
 import {
-  validateEmail 
+  validateEmail
 } from '../controller/valid.js'; // YES - AND HERE CONTROLLER
 
-// ********************** CREATE NEW ACCOUNT
+// ************************** CREATE NEW ACCOUNT *************************************
 //export const model = {};
-export function registerAccount(event) {
-  event.preventDefault();
-  const email = document.querySelector('#formInputEmail-reg').value;
-  const emailValidationResult = validateEmail(email);
-  const password = document.querySelector('#formInputPassw-reg').value;
-  const name = document.querySelector('#formInputName-reg').value;
-  console.log(emailValidationResult);
-
-  if (emailValidationResult === true) {
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+export function registerAccount(email, password, name) {
+  const emailValidation = validateEmail(email);
+  if (emailValidation === true) {
+    return firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(() => {
         const user = firebase.auth().currentUser;
         user.updateProfile({
@@ -21,62 +15,27 @@ export function registerAccount(event) {
           //photoUrl: string
         });
       })
-      .then(() => {
-        window.location.hash = '#/home';
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        window.location.hash = '#/register';
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // [START_EXCLUDE]
-        if (errorCode === 'auth/weak-password') {
-          alert('The password is too weak.');
-        } else {
-          alert(errorMessage);
-        }
-        console.log(error);
-        // [END_EXCLUDE]
-      });
   } else {
-    window.location.hash = '#/register';
-    alert('Please enter a valid email');
+    return Promise.reject(new Error('Por favor llena los campos vacios'))
   }
 }
 
-// ************************* LOGIN USER
-export function enterUser(event) {
-  event.preventDefault();
-  const email = document.querySelector('#formInputEmail').value;
-  const emailValidationResult = validateEmail(email);
-  const password = document.querySelector('#formInputPassw').value;
-  console.log(emailValidationResult);
-
-  if (emailValidationResult === true) {
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then((user) => { //console.log(user);
-        window.location.hash = '#/home';
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        window.location.hash = '#/welcome';
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        if (emailValidationResult === false) {
-          window.location.hash = '#/welcome';
-          alert('Please enter an email');
-          window.location.hash = '#/welcome';
-          alert('Please enter the password');
-        }
-        console.log('funciona model/store ENTER');
-      });
-  }
+// ***************************** ENTER LOGIN USER *************************************
+export function enterUser(email, password) {
+  const emailValidation = validateEmail(email); //console.log(emailValidation);
+  if (emailValidation === true) {
+    return firebase.auth().signInWithEmailAndPassword(email, password)
+   /*  .then((user)=>{
+      console.log(user);
+    })*/
+  } else {
+    return Promise.reject(new Error('Por favor llena los campos vacios'));
+  } 
 }
 
-// ************************ INFO USER
+// ********************************** INFO USER ***************************************
 export function infoUser(cb) {
   firebase.auth().onAuthStateChanged(cb);
-
 }
 
 export function currentUser() {
@@ -85,64 +44,35 @@ export function currentUser() {
   return user;
 }
 
-// ************************ SIGN OUT
+// ********************************** SIGN OUT ***************************************
 export function closed() {
-  firebase.auth().signOut()
-    .then(() => {
-      console.log('Saliendo...');
-      // window.location.hash = '#/welcome'
-       window.location.reload() = '#/welcome';
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  return firebase.auth().signOut()
+    
 }
 
-// **************************** ADD POST FIRESTORE *********************************
+// **************************** ADD POST FIRESTORE ***********************************
 //ADD
-export const addPost = () => {
+export const addPost = (postUser) => {
   const db = firebase.firestore();
-  const postUser = document.querySelector('#addPost').value;
-  db.collection('post').add({
-      descripcion: postUser,
-    })
-    .then((docRef) => {
-      console.log('Document written with ID: ', docRef.id);
-      document.querySelector('#addPost').value = '';
-      //document.querySelector('#published').innerHTML = postUser;
-      window.location.hash = '#/home';
-    })
-    .catch((error) => {
-      console.error('Error adding document:', error);
-    });
+  return db.collection('post').add({
+    descripcion: postUser,
+  })
 }
-//QUERY SNAPSHOT - CONSULTA DATA
-export const postAll = () => {
+
+// ********* QUERY SNAPSHOT - CONSULTA DATA ********
+export const postAll = (cb) => {
   const db = firebase.firestore();
-  let unsubscribe;
   //try {
-    unsubscribe = db.collection("post").onSnapshot((querySnapshot) => {
-      document.querySelector('#publishedAll').innerHTML = '';
-      querySnapshot.forEach((doc) => {
-        let trCreate = document.createElement('tr');
-        trCreate.innerHTML = ` 
-        <td>${doc.data().descripcion}</td>
-        <td><button id="delt"><a href="#/home">Eliminar</button></td>
-        <br>
-        `;
-        trCreate.querySelector('#delt').addEventListener('click', () => deletePost(doc.id))
-        document.querySelector('#publishedAll').appendChild(trCreate);
-      });
-    })
+  const unsubscribe = db.collection("post").onSnapshot(cb);
+  return unsubscribe;
   /* } catch (e) {
     if (unsubscribe) {
       unsubscribe()
     }
   } */
-  
 }
 
-// *********************** DELETE POST 
+// ******************************* DELETE POST ***************************************
 export const deletePost = (id) => {
   console.log(id, 'ID CONSOLE');
   const db = firebase.firestore();
@@ -156,7 +86,7 @@ export const deletePost = (id) => {
     });
 }
 
-// ***********************INICIAR SESIÓN CON FACEBOOK Y GOOGLE**************************************
+// ********************INICIAR SESIÓN CON FACEBOOK Y GOOGLE***************************
 const providerFacebook = new firebase.auth.FacebookAuthProvider();
 const providerGoogle = new firebase.auth.GoogleAuthProvider();
 
@@ -183,5 +113,15 @@ export const redirectResult = () => firebase.auth().getRedirectResult().then((re
   console.log(email);
   console.log(credential);
 });
+
+const createPost = (texto) => {
+  return {
+    texto: texto,
+    fechaCreacion: new Date(),
+    userId: currentUser(),
+    publico: 'public',
+    likes: 0
+  }
+}
 
 // git

@@ -2,7 +2,6 @@ import {
   enterUser,
 } from '../model/data.js';
 
-
 export default () => {
   const viewWelcome = document.createElement('div');
   viewWelcome.innerHTML = `
@@ -21,8 +20,24 @@ export default () => {
     </div>
    </form>`;
 
-  viewWelcome.querySelector('#btn-email').addEventListener('click', enterUser);
+  // ********************* ENTER TO THE ACCONT **************************** 
+  const initEnterUser = (event) => {
+    event.preventDefault();
+    const email = document.querySelector('#formInputEmail').value;
+    const password = document.querySelector('#formInputPassw').value;
+    enterUser(email, password)
+      .then((user) => {
+        console.log(user);
+        window.location.hash = '#/home';
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(error.message);
+      });
+  };
+
+  viewWelcome.querySelector('#btn-email').addEventListener('click', initEnterUser)
   viewWelcome.classList.add('d-flex', 'justify-content-center', 'align-items-center', 'flex-direction-column', 'vh-100');
-  // document.getElementById('form-create').appendChild(viewWelcome);
   return viewWelcome;
 };
