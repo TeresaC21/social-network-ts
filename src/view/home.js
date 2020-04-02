@@ -6,6 +6,9 @@ import {
 } from '../model/data.js'; // NO - CONTROLLER
 import post from './post.js'
 
+// Vamos a tener una sola funcion de desuscripcion activa por vez
+let unsubscribePostsObserver = null;
+
 export default (user) => {
   const viewPost = document.createElement('div');
   viewPost.innerHTML = `
@@ -51,7 +54,15 @@ export default (user) => {
   }
 
   // ********************* QUERY SNAPSHOT ****************************
-  const unsubscribe = postAll((querySnapshot) => {
+  // si estoy volviendo a pintar los posts
+  // me garantizo de dejar de observar los posts
+  // de la pintada anterior
+  if (unsubscribePostsObserver) {
+    unsubscribePostsObserver();
+    unsubscribePostsObserver = null;
+  }
+
+  unsubscribePostsObserver = postAll((querySnapshot) => {
     const publishedAll = document.querySelector('#publishedAll');
     publishedAll.innerHTML = '';
     querySnapshot.forEach((doc) => {
@@ -63,7 +74,10 @@ export default (user) => {
 
   // ***************************** SIGN OUT ****************************
   const initClosed = () => {
-    unsubscribe()
+    // estoy cerrando sesion
+    // me desuscribo de los posts
+    unsubscribePostsObserver()
+    unsubscribePostsObserver = null;
     closed()
       .then(() => {
         console.log('Saliendo...');
