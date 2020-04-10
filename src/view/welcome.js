@@ -26,8 +26,8 @@ export default () => {
     const email = document.querySelector('#formInputEmail').value;
     const password = document.querySelector('#formInputPassw').value;
     enterUser(email, password)
-      .then((user) => {
-        console.log(user);
+      .then((credencial) => {
+        //console.log(credencial);
         window.location.hash = '#/home';
       })
       .catch((error) => {

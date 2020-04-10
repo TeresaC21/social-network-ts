@@ -10,6 +10,8 @@ import post from './post.js'
 let unsubscribePostsObserver = null;
 
 export default (user) => {
+  console.log(user);
+  
   const viewPost = document.createElement('div');
   viewPost.innerHTML = `
   <form id="form-addPost">
@@ -37,7 +39,7 @@ export default (user) => {
   `;
 
   //  AT THE END THE FUNCTIONS ARE CALLED WITH ADDEVENTLISTENER
-  
+
   // ********************* ADD POST ****************************
   const initAddPost = () => {
     const postUser = document.querySelector('#addPost').value;
@@ -57,12 +59,13 @@ export default (user) => {
   // si estoy volviendo a pintar los posts
   // me garantizo de dejar de observar los posts
   // de la pintada anterior
-  if (unsubscribePostsObserver) {
+   if (unsubscribePostsObserver) {
     unsubscribePostsObserver();
     unsubscribePostsObserver = null;
-  }
-
+  } 
+ 
   unsubscribePostsObserver = postAll((querySnapshot) => {
+    //console.log(querySnapshot); // para traer el doc
     const publishedAll = document.querySelector('#publishedAll');
     publishedAll.innerHTML = '';
     querySnapshot.forEach((doc) => {
@@ -71,7 +74,7 @@ export default (user) => {
       trCreate.querySelector('#delt').addEventListener('click', () => deletePost(doc.id))
     });
   })
-
+  
   // ***************************** SIGN OUT ****************************
   const initClosed = () => {
     // estoy cerrando sesion
@@ -87,12 +90,10 @@ export default (user) => {
       .catch((error) => {
         console.log(error);
       });
-    //
   }
 
   viewPost.querySelector('#btn-addPost').addEventListener('click', initAddPost);
   viewPost.querySelector('#btnClosed').addEventListener('click', initClosed);
   viewPost.classList.add('d-flex', 'justify-content-center', 'align-items-center', 'flex-direction-column', 'vh-100');
   return viewPost;
-
 };

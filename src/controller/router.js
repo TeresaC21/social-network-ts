@@ -20,6 +20,7 @@ export const changeView = (route) => {
     }
     case '#/home': {
       infoUser((user) => {
+        //console.log(user);
         if (user) {
           container.appendChild(components.home(user));
         } else {

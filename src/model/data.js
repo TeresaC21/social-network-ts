@@ -9,25 +9,23 @@ export function registerAccount(email, password, name) {
   if (emailValidation === true) {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(() => {
-        const user = firebase.auth().currentUser;
-        user.updateProfile({
+        const userProfile = firebase.auth().currentUser;
+        userProfile.updateProfile({
           displayName: name,
           //photoUrl: string
         });
       })
   } else {
     return Promise.reject(new Error('Por favor llena los campos vacios'))
-  }
+  } 
 }
+
 
 // ***************************** ENTER LOGIN USER *************************************
 export function enterUser(email, password) {
   const emailValidation = validateEmail(email); //console.log(emailValidation);
   if (emailValidation === true) {
     return firebase.auth().signInWithEmailAndPassword(email, password)
-   /*  .then((user)=>{
-      console.log(user);
-    })*/
   } else {
     return Promise.reject(new Error('Por favor llena los campos vacios'));
   } 
@@ -38,11 +36,13 @@ export function infoUser(cb) {
   firebase.auth().onAuthStateChanged(cb);
 }
 
-export function currentUser() {
+/* export function currentUser() {
   infoUser();
   const user = firebase.auth().currentUser;
+  console.log(user);
+  
   return user;
-}
+} */
 
 // ********************************** SIGN OUT ***************************************
 export function closed() {
@@ -62,14 +62,8 @@ export const addPost = (postUser) => {
 // ********* QUERY SNAPSHOT - CONSULTA DATA ********
 export const postAll = (cb) => {
   const db = firebase.firestore();
-  //try {
   const unsubscribe = db.collection("post").onSnapshot(cb);
   return unsubscribe;
-  /* } catch (e) {
-    if (unsubscribe) {
-      unsubscribe()
-    }
-  } */
 }
 
 // ******************************* DELETE POST ***************************************
