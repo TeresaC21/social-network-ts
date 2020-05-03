@@ -16,6 +16,13 @@ Para implementar tu aplicación usarás *HTML5*, *CCS3* o *SASS*, *Vanilla JavaS
 
 * Adquirir la disciplina de la completitud, terminando una historia de usuario antes de pasar a la siguiente (es decir, que cumple con *Definición de Terminado* y *Criterios de Aceptación* contemplando todos los puntos que son objetivos de aprendizaje para este proyecto).
 
+
+![alt text](https://github.com/TeresaC21/social-network-ts/blob/master/src/img/log.png)
+
+
+![alt text](https://github.com/TeresaC21/social-network-ts/blob/master/src/img/home.png)
+
+
 ### Desarrollo frontend
 
 #### Arquitectura de la aplicación
