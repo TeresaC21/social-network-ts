@@ -6,8 +6,6 @@ export const changeView = (route) => {
   container.innerHTML = '';
   switch (route) {
     case '':
-      container.appendChild(components.welcome());
-      break
     case '#':
     case '#/':
     case '#/welcome': {
@@ -23,10 +21,10 @@ export const changeView = (route) => {
         //console.log(user);
         if (user) {
           container.appendChild(components.home(user));
-        } else {
+        } /* else {
           // redirigir al login
           container.appendChild(components.welcome());
-        }
+        } */
       })
       break;
     }

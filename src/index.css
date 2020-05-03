@@ -48,7 +48,10 @@ a {
     border: none; 
     font-size: 1rem;
 }
-
+.td{
+ padding-bottom: 2rem; 
+ border-bottom: 1rem;    
+}
 .buttons:hover {
     background-color: #E7E247;
     color: white;
